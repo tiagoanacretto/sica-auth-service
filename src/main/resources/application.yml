@@ -1,0 +1,23 @@
+
+server:
+  port : 8081
+
+jwt:
+  secret: usersecret234sdfsd
+  jwtExpirationMs: 86400000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5434/auth-service
+    username: postgres
+    password: 123
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
