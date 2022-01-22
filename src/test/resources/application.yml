@@ -1,0 +1,10 @@
+
+jwt:
+  secret: usersecrettest
+  jwtExpirationMs: 86400000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5434/auth-service
+    username: postgres
+    password: 123

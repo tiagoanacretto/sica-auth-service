@@ -1,9 +1,9 @@
 
 server:
-  port: 8081
+  port: 8080
 
 jwt:
-  secret: usersecret234sdfsd
+  secret: ${JWT_SECRET:usersecretpocsica}
   jwtExpirationMs: 86400000
 
 spring:

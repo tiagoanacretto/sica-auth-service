@@ -11,6 +11,10 @@ import br.com.sica.authservice.repositories.UserRepository;
 import br.com.sica.authservice.services.UserDetailsImpl;
 import br.com.sica.authservice.services.UserDetailsServiceImpl;
 import br.com.sica.authservice.utils.JwtUtils;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +40,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@OpenAPIDefinition(
+        info = @Info(
+                title = "sica-auth-service",
+                description = "Serviço de autenticação para a POC da plataforma SICA",
+                version = "1.0.0",
+                contact = @Contact(name = "Tiago Anacretto", email = "tiago.anacretto@gmail.com")
+        ))
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -61,6 +72,7 @@ public class JwtAuthenticationController {
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
+    @Operation(summary = "Autenticação de usuário", description = "Endpoint responsável pela autenticação de um usuário")
     @RequestMapping(value = "/signin", method = RequestMethod.POST)
     public ResponseEntity<?> autenticarUsuario(@Valid @RequestBody LoginRequest loginRequest) throws Exception {
         logger.info("Iniciando autenticarUsuario...");
@@ -82,6 +94,7 @@ public class JwtAuthenticationController {
                 roles));
     }
 
+    @Operation(summary = "Criação de usuário", description = "Endpoint responsável pela criação de novos usuários")
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
@@ -121,6 +134,7 @@ public class JwtAuthenticationController {
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 
+    @Operation(summary = "Validação de token", description = "Endpoint responsável por checar se uma chave JWT é autêntica")
     @RequestMapping(value = "/checktoken/{token}", method = RequestMethod.GET)
     public ResponseEntity<?> validarTokenAutenticacao(@PathVariable String token) throws Exception {
         logger.info("Iniciando check token...");
