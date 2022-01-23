@@ -59,10 +59,10 @@ jobs:
           login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-      - run: |
-          # docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:${{ github.sha }}
+      - run: 
           docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:${{ github.sha }}
-
+          
+#  docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:${{ github.sha }}
 #      - name: 'Deploy to Azure Container Instances'
 #        uses: 'azure/aci-deploy@v1'
 #        with:
@@ -74,4 +74,4 @@ jobs:
 #          registry-username: ${{ secrets.REGISTRY_USERNAME }}
 #          registry-password: ${{ secrets.REGISTRY_PASSWORD }}
 #          name: aci-sica-auth-service
-          location: 'east us'
+#          location: 'east us'
