@@ -63,7 +63,7 @@ jobs:
           docker tag ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:latest ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:${{ github.sha }}
           docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:${{ github.sha }}
           
-#  docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:${{ github.sha }}
+#    docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:${{ github.sha }}
 #      - name: 'Deploy to Azure Container Instances'
 #        uses: 'azure/aci-deploy@v1'
 #        with:
