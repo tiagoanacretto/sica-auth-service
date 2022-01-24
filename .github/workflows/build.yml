@@ -60,6 +60,7 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
       - run: 
+          docker tag ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:latest ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:${{ github.sha }}
           docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:${{ github.sha }}
           
 #  docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/sica-auth-service:${{ github.sha }}
