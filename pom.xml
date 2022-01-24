@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.sica</groupId>
-	<artifactId>auth-service</artifactId>
+	<artifactId>sica-auth-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>auth-service</name>
 	<description>Serviço de autenticação para a POC do SICA</description>
